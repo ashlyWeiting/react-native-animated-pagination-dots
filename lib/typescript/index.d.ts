@@ -13,7 +13,7 @@ export interface IDotContainerProps {
     activeDotColor: string;
     inactiveDotColor?: string;
     vertical?: boolean;
-    accessibilityProps?: AccessibilityProps;
+    getAccessibilityProps?: (idx: number) => AccessibilityProps;
     onPress?: (idx: number) => void;
 }
 declare const DotContainer: React.FC<IDotContainerProps>;

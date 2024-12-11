@@ -13,5 +13,5 @@ declare const Dot: React.FC<{
     activeColor: string;
     inactiveColor?: string;
     sizeRatio: number;
-} & Pick<IDotContainerProps, 'onPress' | 'accessibilityProps'>>;
+} & Pick<IDotContainerProps, 'onPress' | 'getAccessibilityProps'>>;
 export default Dot;

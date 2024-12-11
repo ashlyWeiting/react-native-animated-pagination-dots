@@ -19,7 +19,7 @@ const Dot: React.FC<
     activeColor: string;
     inactiveColor?: string;
     sizeRatio: number;
-  } & Pick<IDotContainerProps, 'onPress' | 'accessibilityProps'>
+  } & Pick<IDotContainerProps, 'onPress' | 'getAccessibilityProps'>
 > = (props) => {
   const [animVal] = useState(new Animated.Value(0));
   const [animate, setAnimate] = useState(false);
@@ -130,11 +130,10 @@ const Dot: React.FC<
     if (props.idx > 5) return <EmptyDot sizeRatio={props.sizeRatio} />;
   }
 
-  const accessibilityProps = props.accessibilityProps || {};
-
   return (
     <TouchableOpacity
-      {...accessibilityProps}
+      {...(props.getAccessibilityProps &&
+        props.getAccessibilityProps(props.idx))}
       onPress={() => {
         props.onPress?.(props.idx);
       }}

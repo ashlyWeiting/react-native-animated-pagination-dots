@@ -24,7 +24,7 @@ export interface IDotContainerProps {
   activeDotColor: string;
   inactiveDotColor?: string;
   vertical?: boolean;
-  accessibilityProps?: AccessibilityProps;
+  getAccessibilityProps?: (idx: number) => AccessibilityProps;
   onPress?: (idx: number) => void;
 }
 
@@ -117,7 +117,7 @@ const DotContainer: React.FC<IDotContainerProps> = (props) => {
               maxPage={maxPage}
               activeColor={activeDotColor}
               inactiveColor={inactiveDotColor}
-              accessibilityProps={props.accessibilityProps}
+              getAccessibilityProps={props.getAccessibilityProps}
               onPress={props.onPress}
             />
           );
@@ -157,7 +157,7 @@ const DotContainer: React.FC<IDotContainerProps> = (props) => {
               maxPage={maxPage}
               activeColor={activeDotColor}
               inactiveColor={inactiveDotColor}
-              accessibilityProps={props.accessibilityProps}
+              getAccessibilityProps={props.getAccessibilityProps}
               onPress={props.onPress}
             />
           );
