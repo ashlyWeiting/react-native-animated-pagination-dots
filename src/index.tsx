@@ -11,6 +11,7 @@ import {
   ViewStyle,
   StyleProp,
   StyleSheet,
+  AccessibilityProps,
 } from 'react-native';
 import Dot from './component/Dot';
 import EmptyDot, { defaultEmptyDotSize } from './component/EmptyDot';
@@ -23,6 +24,8 @@ export interface IDotContainerProps {
   activeDotColor: string;
   inactiveDotColor?: string;
   vertical?: boolean;
+  accessibilityProps?: AccessibilityProps;
+  onPress?: (idx: number) => void;
 }
 
 const ONE_EMPTY_DOT_SIZE = defaultEmptyDotSize * defaultEmptyDotSize;
@@ -114,6 +117,8 @@ const DotContainer: React.FC<IDotContainerProps> = (props) => {
               maxPage={maxPage}
               activeColor={activeDotColor}
               inactiveColor={inactiveDotColor}
+              accessibilityProps={props.accessibilityProps}
+              onPress={props.onPress}
             />
           );
         })}
@@ -152,6 +157,8 @@ const DotContainer: React.FC<IDotContainerProps> = (props) => {
               maxPage={maxPage}
               activeColor={activeDotColor}
               inactiveColor={inactiveDotColor}
+              accessibilityProps={props.accessibilityProps}
+              onPress={props.onPress}
             />
           );
         })}

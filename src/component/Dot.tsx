@@ -5,19 +5,22 @@
  * Converted to Functional component. on 21/09/2021
  */
 import React, { useEffect, useMemo, useState } from 'react';
-import { Animated } from 'react-native';
+import { Animated, TouchableOpacity } from 'react-native';
 import usePrevious from 'react-use/lib/usePrevious';
 import EmptyDot from './EmptyDot';
 import { getDotStyle } from '../util/DotUtils';
+import { IDotContainerProps } from 'react-native-animated-pagination-dot';
 
-const Dot: React.FC<{
-  idx: number;
-  curPage: number;
-  maxPage: number;
-  activeColor: string;
-  inactiveColor?: string;
-  sizeRatio: number;
-}> = (props) => {
+const Dot: React.FC<
+  {
+    idx: number;
+    curPage: number;
+    maxPage: number;
+    activeColor: string;
+    inactiveColor?: string;
+    sizeRatio: number;
+  } & Pick<IDotContainerProps, 'onPress' | 'accessibilityProps'>
+> = (props) => {
   const [animVal] = useState(new Animated.Value(0));
   const [animate, setAnimate] = useState(false);
   const [type, setType] = useState(() =>
@@ -127,15 +130,24 @@ const Dot: React.FC<{
     if (props.idx > 5) return <EmptyDot sizeRatio={props.sizeRatio} />;
   }
 
+  const accessibilityProps = props.accessibilityProps || {};
+
   return (
-    <Animated.View
-      style={[
-        {
-          margin: 3 * props.sizeRatio,
-        },
-        animStyle,
-      ]}
-    />
+    <TouchableOpacity
+      {...accessibilityProps}
+      onPress={() => {
+        props.onPress?.(props.idx);
+      }}
+    >
+      <Animated.View
+        style={[
+          {
+            margin: 3 * props.sizeRatio,
+          },
+          animStyle,
+        ]}
+      />
+    </TouchableOpacity>
   );
 };
 

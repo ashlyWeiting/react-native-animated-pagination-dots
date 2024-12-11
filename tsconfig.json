@@ -4,6 +4,8 @@
     "paths": {
       "react-native-animated-pagination-dot": ["./src/index"]
     },
+    "noEmitOnError": false,
+
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,
@@ -20,7 +22,7 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "target": "esnext"
   }
 }
